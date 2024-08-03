@@ -280,9 +280,11 @@ function ManualAttachConnectionHoses:toggleLightStates(isActive, noEventSend)
         self:deactivateLights()
     else
         local rootVehicle = self:getRootVehicle()
-        self:setLightsTypesMask(rootVehicle.spec_lights.lightsTypesMask, true, noEventSend)
-        self:setBeaconLightsVisibility(rootVehicle.spec_lights.beaconLightsActive, true, noEventSend)
-        self:setTurnLightState(rootVehicle.spec_lights.turnLightState, true, noEventSend)
+        if rootVehicle.spec_lights ~= nil then
+            self:setLightsTypesMask(rootVehicle.spec_lights.lightsTypesMask, true, noEventSend)
+            self:setBeaconLightsVisibility(rootVehicle.spec_lights.beaconLightsActive, true, noEventSend)
+            self:setTurnLightState(rootVehicle.spec_lights.turnLightState, true, noEventSend)
+        end
     end
 end
 
